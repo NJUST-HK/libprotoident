@@ -212,7 +212,8 @@ char *display_ident(Flow *f, IdentFlow *ident, struct globalopts *opts) {
 	dump_payload(ident->lpi, 0, pload_out, 100);
 	dump_payload(ident->lpi, 1, pload_in, 100);
         str = (char *)malloc(750);
-        snprintf(str, 750, "%s %s %s %u %u %u %.3f %.3f %" PRIu64 " %" PRIu64 " %s %s\n",
+	//修改了一下在终端的输出格式
+        snprintf(str, 750, "Protocol: %s\nServer IP: %s\nClient IP: %s\nServer Port: %u\nClient Port: %u\nTransmission Protocol: %u\n%.3f\n%.3f\n%" PRIu64 "\n%" PRIu64 "\n%s\n%s\n",
 			proto->name, s_ip, c_ip,
                         f->id.get_server_port(), f->id.get_client_port(),
                         f->id.get_protocol(), ident->start_ts,
