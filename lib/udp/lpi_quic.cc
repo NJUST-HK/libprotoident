@@ -161,7 +161,7 @@ static inline bool match_old_gquic(lpi_data_t *data) {
                         return true;
                 if (MATCH(data->payload[0], 0x1c, ANY, ANY, ANY))
                         return true;
-		//新添加
+		//新添加  即当data->payload[0]MATCH 0x00 时，data->payload[1]MATCH 0xC0~0xCF，均为QUIC协议
                 for (int p = 192; p <= 207; p++) {
                         if (MATCH(data->payload[1], p, ANY, ANY, ANY))
                                 return true;                           
