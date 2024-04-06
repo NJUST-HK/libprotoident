@@ -161,6 +161,11 @@ static inline bool match_old_gquic(lpi_data_t *data) {
                         return true;
                 if (MATCH(data->payload[0], 0x1c, ANY, ANY, ANY))
                         return true;
+		//新添加
+                for (int p = 192; p <= 207; p++) {
+                        if (MATCH(data->payload[1], p, ANY, ANY, ANY))
+                                return true;                           
+                } 
         }
 
         return false;
